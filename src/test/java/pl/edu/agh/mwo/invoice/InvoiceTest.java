@@ -159,5 +159,4 @@ public class InvoiceTest {
         printedInvoice.addProduct(new DairyProduct("Kefir", new BigDecimal("3")), 10);
         Assert.assertNotEquals(expectedResults, printedInvoice.print());
     }
-
 }
