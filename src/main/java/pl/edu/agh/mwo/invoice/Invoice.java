@@ -6,7 +6,7 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private Map<Product, Integer> products = new HashMap<>();
+    private final Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
 
@@ -48,16 +48,15 @@ public class Invoice {
     }
 
     public String print() {
-        String invoiceHeader = "Numer faktury: " + getNumber() + "\n";
 
+        StringBuilder invoiceHeaderBuilder = new StringBuilder("Numer faktury: " + getNumber() + "\n");
         for (Product product : products.keySet()) {
-            invoiceHeader = invoiceHeader + product.getName() + ", szt: " + products.get(product)
-                    + ", cena/szt: " + product.getPrice() + " PLN\n";
+            invoiceHeaderBuilder.append(product.getName()).append(", szt: ").append(products.get(product)).append(", cena/szt: ").append(product.getPrice()).append(" PLN\n");
         }
+        String invoiceHeader = invoiceHeaderBuilder.toString();
 
         invoiceHeader += "Liczba pozycji: " + this.products.size();
         return invoiceHeader;
 
     }
-
 }
