@@ -158,5 +158,4 @@ public class InvoiceTest {
         invoice.addProduct(kefir, 3);
         Assert.assertThat(5, Matchers.comparesEqualTo(invoice.getTotalProductQuantity(kefir)));
     }
-
 }
