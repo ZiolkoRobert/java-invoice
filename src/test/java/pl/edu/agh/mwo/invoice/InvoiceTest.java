@@ -158,6 +158,5 @@ public class InvoiceTest {
         printedInvoice.addProduct(new TaxFreeProduct("Kubek", new BigDecimal("15")), 4);
         printedInvoice.addProduct(new DairyProduct("Kefir", new BigDecimal("3")), 10);
         Assert.assertNotEquals(expectedResults, printedInvoice.print());
-
     }
 }
