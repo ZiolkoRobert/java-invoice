@@ -12,6 +12,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
+        <maven.shade.plugin.version>3.2.3</maven.shade.plugin.version>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
     </properties>
 
@@ -26,7 +30,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- Site, info-reports, and surefire plugins for generating the project documentation. -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>

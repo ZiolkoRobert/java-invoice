@@ -57,6 +57,7 @@ public class Invoice {
 
         invoiceHeader += "Liczba pozycji: " + this.products.size();
         return invoiceHeader;
+
     }
 
 }
