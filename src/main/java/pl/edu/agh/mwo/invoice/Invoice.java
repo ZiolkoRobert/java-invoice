@@ -6,7 +6,7 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private final Map<Product, Integer> products = new HashMap<>();
+    private Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
 
@@ -15,11 +15,22 @@ public class Invoice {
     }
 
     public void addProduct(Product product, Integer quantity) {
+        Integer originalQuantityOfProduct = 0;
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
-        products.put(product, quantity);
+        if (products.containsKey(product)) {
+            originalQuantityOfProduct = products.get(product);
+            products.put(product, quantity + originalQuantityOfProduct);
+        } else {
+            products.put(product, quantity);
+        }
     }
+
+    public int getTotalProductQuantity(Product product) {
+        return products.get(product);
+    }
+
 
     public BigDecimal getNetTotal() {
         BigDecimal totalNet = BigDecimal.ZERO;
@@ -46,17 +57,4 @@ public class Invoice {
     public int getNumber() {
         return number;
     }
-
-    public String print() {
-
-        StringBuilder invoiceHeaderBuilder = new StringBuilder("Numer faktury: " + getNumber() + "\n");
-        for (Product product : products.keySet()) {
-            invoiceHeaderBuilder.append(product.getName()).append(", szt: ").append(products.get(product)).append(", cena/szt: ").append(product.getPrice()).append(" PLN\n");
-        }
-        String invoiceHeader = invoiceHeaderBuilder.toString();
-
-        invoiceHeader += "Liczba pozycji: " + this.products.size();
-        return invoiceHeader;
-    }
-
 }
