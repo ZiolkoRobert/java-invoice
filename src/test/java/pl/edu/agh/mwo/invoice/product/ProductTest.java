@@ -73,4 +73,5 @@ public class ProductTest {
         Product product = new FuelCanister("E95", new BigDecimal("70.0"), true);
         Assert.assertThat(new BigDecimal("91.66"), Matchers.comparesEqualTo(product.getPriceWithTaxWithExciseTax()));
     }
+
 }

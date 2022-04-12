@@ -13,4 +13,5 @@ public class FuelCanister extends OtherProduct {
         this.isFuel = isFuel;
 
     }
+
 }

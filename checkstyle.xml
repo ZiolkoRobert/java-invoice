@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<!--
-These rules are based on the
-https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml
-but without javadoc requirements and with severity set to error.
--->
+
 <!DOCTYPE module PUBLIC
         "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
