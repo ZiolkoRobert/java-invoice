@@ -1,4 +1,5 @@
 package pl.edu.agh.mwo.invoice.product;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
@@ -44,6 +45,4 @@ public abstract class Product {
     public BigDecimal getPriceWithTaxWithExciseTax() {
         return price.multiply(taxPercent).add(price).add(exciseTax);
     }
-
-
 }

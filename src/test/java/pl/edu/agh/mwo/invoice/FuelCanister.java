@@ -10,8 +10,7 @@ public class FuelCanister extends OtherProduct {
 
     public FuelCanister(String name, BigDecimal price, Boolean isFuel) {
         super(name, price);
-        this.isFuel = isFuel;
+        FuelCanister.isFuel = isFuel;
 
     }
-
 }

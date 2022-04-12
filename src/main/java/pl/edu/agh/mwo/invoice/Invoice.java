@@ -7,7 +7,7 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private Map<Product, Integer> products = new HashMap<>();
+    private final Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
 
@@ -16,7 +16,7 @@ public class Invoice {
     }
 
     public void addProduct(Product product, Integer quantity) {
-        Integer originalQuantityOfProduct = 0;
+        Integer originalQuantityOfProduct;
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
@@ -77,5 +77,4 @@ public class Invoice {
         }
         return totalGross;
     }
-
 }
