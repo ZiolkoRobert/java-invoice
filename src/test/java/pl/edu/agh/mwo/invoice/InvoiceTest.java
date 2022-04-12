@@ -158,4 +158,30 @@ public class InvoiceTest {
         invoice.addProduct(kefir, 3);
         Assert.assertThat(5, Matchers.comparesEqualTo(invoice.getTotalProductQuantity(kefir)));
     }
+
+    @Test
+    public void testPrintout() {
+        invoice.addProduct(new TaxFreeProduct("Tablet", new BigDecimal("1678")), 1);
+        invoice.addProduct(new DairyProduct("Zsiadle mleko", new BigDecimal("5.55")), 2);
+        invoice.addProduct(new TaxFreeProduct("Chleb", new BigDecimal("5")), 2);
+        invoice.addProduct(new DairyProduct("Chedar", new BigDecimal("10")), 3);
+        invoice.addProduct(new OtherProduct("Pinezka", new BigDecimal("0.01")), 1000);
+        System.out.println(invoice.getNumber());
+        invoice.printProducts();
+        System.out.println(invoice.numberOfLines());
+    }
+
+
+    @Test
+    public void testInvoiceBottleOfWine() {
+        invoice.addProduct(new BottleOfWine("Chablis", new BigDecimal("80")), 2);
+        Assert.assertThat(new BigDecimal("207.92"), Matchers.comparesEqualTo(invoice.getGrossTotalWithExciseTax()));
+    }
+
+
+    @Test
+    public void testInvoiceFuelCannister() {
+        invoice.addProduct(new FuelCanister("E95", new BigDecimal("70"), true), 1);
+        Assert.assertThat(new BigDecimal("91.66"), Matchers.comparesEqualTo(invoice.getGrossTotalWithExciseTax()));
+    }
 }
